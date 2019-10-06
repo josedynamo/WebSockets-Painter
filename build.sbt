@@ -5,6 +5,8 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
+herokuAppName in Compile := "fast-wildwood-84890"
+
 scalaVersion := "2.13.0"
 
 libraryDependencies += guice

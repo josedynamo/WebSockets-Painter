@@ -8,15 +8,16 @@
             };
     })();
 
-    var socket = new WebSocket("ws://"+location.host+"/stream");
-    var connected = false;
-    socket.onopen = function (ev) { connected = true;  };
-    socket.onclose = function (ev) { connected = false;  };
-    socket.onmessage = function (e) {
-        //socket.send
-
-
-    };
+    //TODO WebSocket handling
+    // var socket = new WebSocket("ws://"+location.host+"/stream");
+    // var connected = false;
+    // socket.onopen = function (ev) { connected = true;  };
+    // socket.onclose = function (ev) { connected = false;  };
+    // socket.onmessage = function (e) {
+    //     //socket.send
+    //
+    //
+    // };
 
     var canvas = document.getElementById("draws");
     var ctx = canvas.getContext("2d");

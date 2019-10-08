@@ -30,10 +30,9 @@ class HomeController @Inject()(cc: ControllerComponents)
   }
 
   def socket = WebSocket.accept[String, String] { request =>
-    // Log events to the console
+
     val in = Sink.foreach[String](println)
 
-    // Send a single 'Hello!' message and then leave the socket open
     val out = Source.single("Hello!").concat(Source.maybe)
 
     Flow.fromSinkAndSource(in, out)
@@ -50,7 +49,6 @@ trait SameOriginCheck {
     * Checks that the WebSocket comes from the same origin.  This is necessary to protect
     * against Cross-Site WebSocket Hijacking as WebSocket does not implement Same Origin Policy.
     *
-    * See https://tools.ietf.org/html/rfc6455#section-1.3 and
     * http://blog.dewhurstsecurity.com/2013/08/30/security-testing-html5-websockets.html
     */
   def sameOriginCheck(rh: RequestHeader): Boolean = {
@@ -73,8 +71,10 @@ trait SameOriginCheck {
     * Returns true if the value of the Origin header contains an acceptable value.
     *
     * This is probably better done through configuration same as the allowedhosts filter.
+    *
     */
   def originMatches(origin: String): Boolean = {
+    //TODO move this to the configuration
     origin.contains("localhost:9000") || origin.contains("localhost:19001")
   }
 }
